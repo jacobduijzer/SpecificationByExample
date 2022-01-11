@@ -4,7 +4,7 @@ Functionaliteit: Zoeken in de product catalogus
     
     Als klant
     Wil ik de product catalogus kunnen doorzoeken op producten die ik wil kopen
-    Zodat ik kan kijken of het product leverbaar is
+    Zodat ik kan zien of het product leverbaar is
     
     Scenario: Een boek zoeken in een bepaalde categorie
         Gegeven Simone wil het boek "Specification By Example" kopen
