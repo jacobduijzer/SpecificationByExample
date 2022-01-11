@@ -40,7 +40,7 @@ public class ProductenZoeken : RefitFixture<ISearchApi>
         var expectedResult = table.CreateSet<BookResult>();
         var category = _scenarioContext.Get<string>("CATEGORY");
         var searchString = _scenarioContext.Get<string>("SEARCH_STRING");
-        var api = _searchApi.GetRestClient("http://localhost/api");
+        var api = _searchApi.GetRestClient("http://localhost:8000/api");
         var result = await api.ByCategoryAndString(category, searchString);
         
         Assert.NotNull(result);

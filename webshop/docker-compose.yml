@@ -5,7 +5,7 @@ services:
     image: webshop-api:latest
     container_name: webshop.api
     ports:
-      - 80:5156
+      - 8000:5156
     build:
       context: .
       dockerfile: Dockerfile

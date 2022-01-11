@@ -41,7 +41,7 @@ namespace WebShop.Specifications.Specs
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("nl-NL"), "", "Zoeken in de product catalogus", "    Als klant\n    Wil ik de product catalogus kunnen doorzoeken op producten die " +
-                    "ik wil kopen\n    Zodat ik kan kijken of het product leverbaar is", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    "ik wil kopen\n    Zodat ik kan zien of het product leverbaar is", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         

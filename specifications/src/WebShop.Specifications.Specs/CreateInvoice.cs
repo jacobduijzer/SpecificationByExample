@@ -58,7 +58,7 @@ public class CreateInvoice : RefitFixture<IPaymentApi>
     public async Task WhenIAmGoingToPayMyOrder()
     {
         var shoppingCart = _scenarioContext.Get<ShoppingCart>(ShoppingCart);
-        var api = _paymentApi.GetRestClient("http://localhost/api");
+        var api = _paymentApi.GetRestClient("http://localhost:8000/api");
         var invoice = await api.CreateOrder(shoppingCart);
         _scenarioContext.Add(Invoice, invoice);
     }

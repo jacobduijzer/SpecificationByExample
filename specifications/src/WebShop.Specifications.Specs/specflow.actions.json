@@ -1,0 +1,5 @@
+{
+  "docker": {
+    "file": "../../../../../../webshop/docker-compose.yml"
+  }
+}

@@ -435,7 +435,7 @@ namespace WebShop.Specifications.Specs
          testRunner.When("she is going to pay her order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 71
-         testRunner.Then(string.Format("the shiping costs should be {0}", shippingCosts), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+         testRunner.Then(string.Format("the shipping costs should be {0}", shippingCosts), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
