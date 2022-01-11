@@ -40,8 +40,8 @@ namespace WebShop.Specifications.Specs
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "Creating an invoice from a shopping basket", "As a customer\nWhen I order books\nI want to receive an invoice so I can review my " +
-                    "payments", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "Creating an invoice from a shopping basket", "As a customer\nI want to review my order before paying\nSo I know what items I orde" +
+                    "red and the amount I have to pay", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -78,7 +78,7 @@ namespace WebShop.Specifications.Specs
         
         public virtual void FeatureBackground()
         {
-#line 6
+#line 7
     #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Title",
@@ -115,7 +115,7 @@ namespace WebShop.Specifications.Specs
                         "Mark Seemann",
                         "Hard copy",
                         "35.99"});
-#line 7
+#line 8
         testRunner.Given("the following books", ((string)(null)), table1, "Given ");
 #line hidden
         }
@@ -134,7 +134,7 @@ namespace WebShop.Specifications.Specs
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering digital books only", "    Placing an order with digital products only should result in an invoice with " +
                     "no additional cost for shipping.", tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 16
+#line 17
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -154,16 +154,16 @@ namespace WebShop.Specifications.Specs
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
     this.FeatureBackground();
 #line hidden
-#line 20
+#line 21
         testRunner.Given("Simone has a shopping cart with: \'Specification By Example\' with format \'PDF\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 21
+#line 22
         testRunner.And("it also contains \'Writing Great Specifications\' with format \'epub\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 22
+#line 23
         testRunner.When("she is going to pay her order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -184,7 +184,7 @@ namespace WebShop.Specifications.Specs
                             "22.67",
                             "0",
                             "22.67"});
-#line 23
+#line 24
         testRunner.Then("she should get an invoice that has the following invoice items", ((string)(null)), table2, "Then ");
 #line hidden
             }
@@ -200,7 +200,7 @@ namespace WebShop.Specifications.Specs
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering multiple items of the same book", "    Ordering multiple items of the same book should give a different total price " +
                     "(book price times the number of books ordered)", tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 28
+#line 29
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -220,17 +220,17 @@ namespace WebShop.Specifications.Specs
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
     this.FeatureBackground();
 #line hidden
-#line 32
+#line 33
         testRunner.Given("Simone has a shopping cart with 2 copies of \'Specification By Example\' with forma" +
                         "t \'PDF\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 33
+#line 34
         testRunner.And("it also contains 1 copy of \'Writing Great Specifications\' with format \'epub\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 34
+#line 35
         testRunner.When("she is going to pay her order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -251,7 +251,7 @@ namespace WebShop.Specifications.Specs
                             "22.67",
                             "0",
                             "22.67"});
-#line 35
+#line 36
         testRunner.Then("she should get an invoice that has the following invoice items", ((string)(null)), table3, "Then ");
 #line hidden
             }
@@ -267,7 +267,7 @@ namespace WebShop.Specifications.Specs
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering hard copy books should add shipping costs", "    Placing an order with fysical items should add shipping costs to the invoice." +
                     "", tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 40
+#line 41
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -287,14 +287,14 @@ namespace WebShop.Specifications.Specs
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
     this.FeatureBackground();
 #line hidden
-#line 44
+#line 45
         testRunner.Given("Simone has a shopping cart with: \'Specification By Example\' with format \'Hard cop" +
                         "y\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 45
+#line 46
         testRunner.When("she is going to pay her order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -315,7 +315,7 @@ namespace WebShop.Specifications.Specs
                             "5.95",
                             "0",
                             "5.95"});
-#line 46
+#line 47
         testRunner.Then("she should get an invoice that has the following invoice items", ((string)(null)), table4, "Then ");
 #line hidden
             }
@@ -335,7 +335,7 @@ namespace WebShop.Specifications.Specs
                     "ipping", "    Placing an order with a total amount above EUR 100 should give free shipping\n" +
                     "        \n***Free Shipping:***\n![Shopping Cart Mockup](./src/WebShop.Specificatio" +
                     "ns.Specs/Notes/shipping_costs.png)", tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 51
+#line 52
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -355,14 +355,14 @@ namespace WebShop.Specifications.Specs
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
     this.FeatureBackground();
 #line hidden
-#line 58
+#line 59
         testRunner.Given("Simone has a shopping cart with 10 copies of \'Specification By Example\' with form" +
                         "at \'Hard copy\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 59
+#line 60
         testRunner.When("she is going to pay her order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -383,7 +383,7 @@ namespace WebShop.Specifications.Specs
                             "5.95",
                             "5.95",
                             "0"});
-#line 60
+#line 61
         testRunner.Then("she should get an invoice that has the following invoice items", ((string)(null)), table5, "Then ");
 #line hidden
             }
@@ -404,7 +404,7 @@ namespace WebShop.Specifications.Specs
             argumentsOfScenario.Add("amount", amount);
             argumentsOfScenario.Add("shipping costs", shippingCosts);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering different amounts of books", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 66
+#line 67
      this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -424,17 +424,17 @@ namespace WebShop.Specifications.Specs
             else
             {
                 this.ScenarioStart();
-#line 6
+#line 7
     this.FeatureBackground();
 #line hidden
-#line 68
+#line 69
          testRunner.Given(string.Format("Simone has a shopping cart with {0} copies of \'Specification By Example\' with for" +
                             "mat \'Hard copy\'", amount), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 69
+#line 70
          testRunner.When("she is going to pay her order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 70
+#line 71
          testRunner.Then(string.Format("the shiping costs should be {0}", shippingCosts), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

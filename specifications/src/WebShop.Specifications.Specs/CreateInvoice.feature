@@ -1,7 +1,8 @@
 Feature: Creating an invoice from a shopping basket
+    
 As a customer
-When I order books
-I want to receive an invoice so I can review my payments
+I want to review my order before paying
+So I know what items I ordered and the amount I have to pay
 
     Background:
         Given the following books
@@ -67,7 +68,7 @@ I want to receive an invoice so I can review my payments
          
          Given Simone has a shopping cart with <amount> copies of 'Specification By Example' with format 'Hard copy'
          When she is going to pay her order
-         Then the shiping costs should be <shipping costs>
+         Then the shipping costs should be <shipping costs>
          
          Examples:
          | amount | shipping costs |

@@ -81,8 +81,8 @@ public class CreateInvoice : RefitFixture<IPaymentApi>
         }
     }
 
-    [Then(@"the shiping costs should be (.*)")]
-    public void ThenTheShipingCostsShouldBe(decimal expectedPriceForShipping)
+    [Then(@"the shipping costs should be (.*)")]
+    public void ThenTheShippingCostsShouldBe(decimal expectedPriceForShipping)
     {
         var invoice = _scenarioContext.Get<Invoice>(Invoice);
         var shipping = invoice.InvoiceItems.First(x => x.Title.Contains("Shipping"));
