@@ -332,7 +332,9 @@ namespace WebShop.Specifications.Specs
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering fysical items with a total amount above EUR 100 should result in free sh" +
-                    "ipping", "    Placing an order with a total amount above EUR 100 should give free shipping", tagsOfScenario, argumentsOfScenario, this._featureTags);
+                    "ipping", "    Placing an order with a total amount above EUR 100 should give free shipping\n" +
+                    "        \n***Free Shipping:***\n![Shopping Cart Mockup](./src/WebShop.Specificatio" +
+                    "ns.Specs/Notes/shipping_costs.png)", tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 51
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -356,11 +358,11 @@ namespace WebShop.Specifications.Specs
 #line 6
     this.FeatureBackground();
 #line hidden
-#line 55
+#line 58
         testRunner.Given("Simone has a shopping cart with 10 copies of \'Specification By Example\' with form" +
                         "at \'Hard copy\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 56
+#line 59
         testRunner.When("she is going to pay her order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -381,8 +383,59 @@ namespace WebShop.Specifications.Specs
                             "5.95",
                             "5.95",
                             "0"});
-#line 57
+#line 60
         testRunner.Then("she should get an invoice that has the following invoice items", ((string)(null)), table5, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Ordering different amounts of books")]
+        [Xunit.TraitAttribute("FeatureTitle", "Creating an invoice from a shopping basket")]
+        [Xunit.TraitAttribute("Description", "Ordering different amounts of books")]
+        [Xunit.InlineDataAttribute("1", "5.95", new string[0])]
+        [Xunit.InlineDataAttribute("3", "5.95", new string[0])]
+        [Xunit.InlineDataAttribute("4", "0", new string[0])]
+        [Xunit.InlineDataAttribute("10", "0", new string[0])]
+        public virtual void OrderingDifferentAmountsOfBooks(string amount, string shippingCosts, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("amount", amount);
+            argumentsOfScenario.Add("shipping costs", shippingCosts);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering different amounts of books", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 66
+     this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 6
+    this.FeatureBackground();
+#line hidden
+#line 68
+         testRunner.Given(string.Format("Simone has a shopping cart with {0} copies of \'Specification By Example\' with for" +
+                            "mat \'Hard copy\'", amount), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 69
+         testRunner.When("she is going to pay her order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 70
+         testRunner.Then(string.Format("the shiping costs should be {0}", shippingCosts), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

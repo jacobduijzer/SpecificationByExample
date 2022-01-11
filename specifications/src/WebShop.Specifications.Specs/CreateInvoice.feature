@@ -51,6 +51,9 @@ I want to receive an invoice so I can review my payments
     Scenario: Ordering fysical items with a total amount above EUR 100 should result in free shipping
 
     Placing an order with a total amount above EUR 100 should give free shipping
+        
+***Free Shipping:***
+![Shopping Cart Mockup](./src/WebShop.Specifications.Specs/Notes/shipping_costs.png)
 
         Given Simone has a shopping cart with 10 copies of 'Specification By Example' with format 'Hard copy'
         When she is going to pay her order
@@ -58,3 +61,21 @@ I want to receive an invoice so I can review my payments
           | Name                                               | Amount | Price | Discount | Total Price |
           | Hard copy: Specification By Example by Gojko Adzic | 10x    | 31.49 | 0        | 314.90      |
           | Shipping                                           | 1x     | 5.95  | 5.95     | 0           |
+          
+
+     Scenario Outline: Ordering different amounts of books
+         
+         Given Simone has a shopping cart with <amount> copies of 'Specification By Example' with format 'Hard copy'
+         When she is going to pay her order
+         Then the shiping costs should be <shipping costs>
+         
+         Examples:
+         | amount | shipping costs |
+         | 1      | 5.95           |
+         | 3      | 5.95           |
+         | 4      | 0              |
+         | 10     | 0              |
+
+        
+        
+    

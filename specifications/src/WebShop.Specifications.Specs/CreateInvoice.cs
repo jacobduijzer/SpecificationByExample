@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using ProductCatalog.Domain;
 using ProductCatalog.Infrastructure;
 using TechTalk.SpecFlow;
@@ -78,5 +79,13 @@ public class CreateInvoice : RefitFixture<IPaymentApi>
                 x.Price == expectedItem.Price &&
                 x.TotalPrice == expectedItem.TotalPrice) == 1);
         }
+    }
+
+    [Then(@"the shiping costs should be (.*)")]
+    public void ThenTheShipingCostsShouldBe(decimal expectedPriceForShipping)
+    {
+        var invoice = _scenarioContext.Get<Invoice>(Invoice);
+        var shipping = invoice.InvoiceItems.First(x => x.Title.Contains("Shipping"));
+        Assert.Equal(expectedPriceForShipping, shipping.TotalPrice);
     }
 }
