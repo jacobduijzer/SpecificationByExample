@@ -24,7 +24,7 @@ namespace WebShop.Specifications.Specs
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private string[] _featureTags = ((string[])(null));
+        private static string[] featureTags = ((string[])(null));
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
@@ -41,7 +41,7 @@ namespace WebShop.Specifications.Specs
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "Creating an invoice from a shopping basket", "As a customer\nI want to review my order before paying\nSo I know what items I orde" +
-                    "red and the amount I have to pay", ProgrammingLanguage.CSharp, ((string[])(null)));
+                    "red and the amount I have to pay", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -51,27 +51,27 @@ namespace WebShop.Specifications.Specs
             testRunner = null;
         }
         
-        public virtual void TestInitialize()
+        public void TestInitialize()
         {
         }
         
-        public virtual void TestTearDown()
+        public void TestTearDown()
         {
             testRunner.OnScenarioEnd();
         }
         
-        public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
+        public void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
             testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Xunit.Abstractions.ITestOutputHelper>(_testOutputHelper);
         }
         
-        public virtual void ScenarioStart()
+        public void ScenarioStart()
         {
             testRunner.OnScenarioStart();
         }
         
-        public virtual void ScenarioCleanup()
+        public void ScenarioCleanup()
         {
             testRunner.CollectScenarioErrors();
         }
@@ -128,26 +128,16 @@ namespace WebShop.Specifications.Specs
         [Xunit.SkippableFactAttribute(DisplayName="Ordering digital books only")]
         [Xunit.TraitAttribute("FeatureTitle", "Creating an invoice from a shopping basket")]
         [Xunit.TraitAttribute("Description", "Ordering digital books only")]
-        public virtual void OrderingDigitalBooksOnly()
+        public void OrderingDigitalBooksOnly()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering digital books only", "    Placing an order with digital products only should result in an invoice with " +
-                    "no additional cost for shipping.", tagsOfScenario, argumentsOfScenario, this._featureTags);
+                    "no additional cost for shipping.", tagsOfScenario, argumentsOfScenario, featureTags);
 #line 17
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
                 testRunner.SkipScenario();
             }
@@ -194,26 +184,16 @@ namespace WebShop.Specifications.Specs
         [Xunit.SkippableFactAttribute(DisplayName="Ordering multiple items of the same book")]
         [Xunit.TraitAttribute("FeatureTitle", "Creating an invoice from a shopping basket")]
         [Xunit.TraitAttribute("Description", "Ordering multiple items of the same book")]
-        public virtual void OrderingMultipleItemsOfTheSameBook()
+        public void OrderingMultipleItemsOfTheSameBook()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering multiple items of the same book", "    Ordering multiple items of the same book should give a different total price " +
-                    "(book price times the number of books ordered)", tagsOfScenario, argumentsOfScenario, this._featureTags);
+                    "(book price times the number of books ordered)", tagsOfScenario, argumentsOfScenario, featureTags);
 #line 29
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
                 testRunner.SkipScenario();
             }
@@ -261,26 +241,16 @@ namespace WebShop.Specifications.Specs
         [Xunit.SkippableFactAttribute(DisplayName="Ordering hard copy books should add shipping costs")]
         [Xunit.TraitAttribute("FeatureTitle", "Creating an invoice from a shopping basket")]
         [Xunit.TraitAttribute("Description", "Ordering hard copy books should add shipping costs")]
-        public virtual void OrderingHardCopyBooksShouldAddShippingCosts()
+        public void OrderingHardCopyBooksShouldAddShippingCosts()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering hard copy books should add shipping costs", "    Placing an order with fysical items should add shipping costs to the invoice." +
-                    "", tagsOfScenario, argumentsOfScenario, this._featureTags);
+                    "", tagsOfScenario, argumentsOfScenario, featureTags);
 #line 41
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
                 testRunner.SkipScenario();
             }
@@ -322,33 +292,23 @@ namespace WebShop.Specifications.Specs
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Ordering fysical items with a total amount above EUR 100 should result in free sh" +
-            "ipping")]
+        [Xunit.SkippableFactAttribute(DisplayName="Ordering physical items with a total amount above EUR 100 should result in free s" +
+            "hipping")]
         [Xunit.TraitAttribute("FeatureTitle", "Creating an invoice from a shopping basket")]
-        [Xunit.TraitAttribute("Description", "Ordering fysical items with a total amount above EUR 100 should result in free sh" +
-            "ipping")]
-        public virtual void OrderingFysicalItemsWithATotalAmountAboveEUR100ShouldResultInFreeShipping()
+        [Xunit.TraitAttribute("Description", "Ordering physical items with a total amount above EUR 100 should result in free s" +
+            "hipping")]
+        public void OrderingPhysicalItemsWithATotalAmountAboveEUR100ShouldResultInFreeShipping()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering fysical items with a total amount above EUR 100 should result in free sh" +
-                    "ipping", "    Placing an order with a total amount above EUR 100 should give free shipping\n" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering physical items with a total amount above EUR 100 should result in free s" +
+                    "hipping", "    Placing an order with a total amount above EUR 100 should give free shipping\n" +
                     "        \n***Free Shipping:***\n![Shopping Cart Mockup](./src/WebShop.Specificatio" +
-                    "ns.Specs/Notes/shipping_costs.png)", tagsOfScenario, argumentsOfScenario, this._featureTags);
+                    "ns.Specs/Notes/shipping_costs.png)", tagsOfScenario, argumentsOfScenario, featureTags);
 #line 52
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
                 testRunner.SkipScenario();
             }
@@ -397,27 +357,17 @@ namespace WebShop.Specifications.Specs
         [Xunit.InlineDataAttribute("3", "5.95", new string[0])]
         [Xunit.InlineDataAttribute("4", "0", new string[0])]
         [Xunit.InlineDataAttribute("10", "0", new string[0])]
-        public virtual void OrderingDifferentAmountsOfBooks(string amount, string shippingCosts, string[] exampleTags)
+        public void OrderingDifferentAmountsOfBooks(string amount, string shippingCosts, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("amount", amount);
             argumentsOfScenario.Add("shipping costs", shippingCosts);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering different amounts of books", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering different amounts of books", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 67
      this.ScenarioInitialize(scenarioInfo);
 #line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
                 testRunner.SkipScenario();
             }

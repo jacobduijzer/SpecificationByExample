@@ -6,7 +6,7 @@ I have a small API, running as a Docker container. It is a basic sample of a RES
 
 ## Demonstration
 
-1. [Swagger page](http://localhost/swagger)
+1. [Swagger page](http://localhost:8000/swagger)
 2. Get products (Get category, search cat + title)
 3. Verify results
 4. Go though the specifications, first Dutch, then English

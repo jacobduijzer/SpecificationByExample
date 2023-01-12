@@ -49,7 +49,7 @@ So I know what items I ordered and the amount I have to pay
           | Hard copy: Specification By Example by Gojko Adzic | 1x     | 31.49 | 0        | 31.49       |
           | Shipping                                           | 1x     | 5.95  | 0        | 5.95        |
 
-    Scenario: Ordering fysical items with a total amount above EUR 100 should result in free shipping
+    Scenario: Ordering physical items with a total amount above EUR 100 should result in free shipping
 
     Placing an order with a total amount above EUR 100 should give free shipping
         
