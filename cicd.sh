@@ -10,5 +10,3 @@ dotnet test specifications/src/WebShop.Specifications.Specs/WebShop.Specificatio
   -t specifications/src/WebShop.Specifications.Specs/bin/Debug/net6.0/TestExecution.json \
   --binding-assemblies specifications/src/WebShop.Specifications.Specs/bin/Debug/net6.0/WebShop.Specifications.Specs.dll \
   --output livingdoc.html
-
-open livingdoc.html
