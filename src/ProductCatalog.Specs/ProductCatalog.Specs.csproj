@@ -29,4 +29,8 @@
       <ProjectReference Include="..\ProductCatalog.Specs.Runner\ProductCatalog.Specs.Runner.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Assets" />
+    </ItemGroup>
+
 </Project>

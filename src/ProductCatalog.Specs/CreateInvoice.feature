@@ -54,7 +54,7 @@ So I know what items I ordered and the amount I have to pay
     Placing an order with a total amount above EUR 100 should give free shipping
         
 ***Free Shipping:***
-![Shopping Cart Mockup](./src/WebShop.Specifications.Specs/Notes/shipping_costs.png)
+![Shopping Cart Mockup](./src/ProductCatalog.Specs/Assets/shipping_costs.png)
 
         Given Simone has a shopping cart with 10 copies of 'Specification By Example' with format 'Hardcover'
         When she is going to pay her order

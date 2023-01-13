@@ -303,8 +303,8 @@ namespace ProductCatalog.Specs
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering physical items with a total amount above EUR 100 should result in free s" +
                     "hipping", "    Placing an order with a total amount above EUR 100 should give free shipping\n" +
-                    "        \n***Free Shipping:***\n![Shopping Cart Mockup](./src/WebShop.Specificatio" +
-                    "ns.Specs/Notes/shipping_costs.png)", tagsOfScenario, argumentsOfScenario, featureTags);
+                    "        \n***Free Shipping:***\n![Shopping Cart Mockup](./src/ProductCatalog.Specs" +
+                    "/Assets/shipping_costs.png)", tagsOfScenario, argumentsOfScenario, featureTags);
 #line 52
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
