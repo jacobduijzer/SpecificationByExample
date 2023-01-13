@@ -1,0 +1,7 @@
+{
+  "stepAssemblies": [
+    {
+      "assembly": "ProductCatalog.Specs.Runner"
+    }
+  ]
+}
