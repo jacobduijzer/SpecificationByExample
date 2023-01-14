@@ -31,3 +31,8 @@ jobs:
       with:
         name: LivingDoc
         path: /home/runner/work/SpecificationByExample/SpecificationByExample/livingdoc.html
+    - name: HTML Preview
+      id: html_preview
+      uses: pavi2410/html-preview-action@v2
+      with:
+        html_file: '/home/runner/work/SpecificationByExample/SpecificationByExample/livingdoc.html'
