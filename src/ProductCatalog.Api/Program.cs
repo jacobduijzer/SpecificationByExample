@@ -24,7 +24,7 @@ app.MapPost("/payments", ([FromBody] ShoppingCart shoppingCart) =>
     return Results.Ok(invoice);
 });
 
-app.MapGet("/search", ([AsParameters] SearchCriteria criteria) =>
+app.MapGet("/search", ([AsParameters]SearchCriteria criteria) =>
 {
     SearchBooksInCategoryQuery query = new(criteria);
     return Results.Ok(query.Handle());

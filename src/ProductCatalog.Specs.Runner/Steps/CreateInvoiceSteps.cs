@@ -20,7 +20,7 @@ public class CreateInvoiceSteps : IClassFixture<TestWebApplicationFactory<Progra
         TestWebApplicationFactory<Program> factory)
     {
         _scenarioContext = scenarioContext;
-        _api = Refit.RestService.For<IPaymentApi>(factory.CreateClient());
+        _api = Refit.RestService.For<IPaymentApi>(factory.GetClient());
     }
 
     [Given(@"the following books")]

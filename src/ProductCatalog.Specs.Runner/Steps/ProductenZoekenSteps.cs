@@ -15,7 +15,7 @@ public class ProductenZoekenSteps : IClassFixture<TestWebApplicationFactory<Prog
         TestWebApplicationFactory<Program> factory)
     {
         _scenarioContext = scenarioContext;
-        _api = Refit.RestService.For<ISearchApi>(factory.CreateClient());
+        _api = Refit.RestService.For<ISearchApi>(factory.GetClient());
     }
     
     [Given(@"Simone wil een boek kopen met de titel ""(.*)""")]

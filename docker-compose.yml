@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  webshop.api:
+    image: webshop-api:latest
+    container_name: webshop.api
+    ports:
+      - 8000:5000
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_URLS: http://+:5000
+    restart: always

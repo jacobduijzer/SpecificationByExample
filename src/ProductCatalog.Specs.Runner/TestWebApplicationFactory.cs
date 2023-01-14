@@ -10,4 +10,15 @@ public class TestWebApplicationFactory <TProgram>
     {
         return base.CreateHost(builder);
     }
+
+    public HttpClient GetClient()
+    {
+        if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("ApplicationUrl")))
+            return new HttpClient
+            {
+                BaseAddress = new Uri(Environment.GetEnvironmentVariable("ApplicationUrl"))
+            };
+
+        return CreateClient();
+    }
 }
