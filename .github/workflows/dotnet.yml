@@ -1,6 +1,3 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
 name: .NET
 
 on:
@@ -28,3 +25,5 @@ jobs:
       run: dotnet build --no-restore src/ProductCatalog.Specs/ProductCatalog.Specs.csproj
     - name: Test
       run: dotnet test --no-build --verbosity normal src/ProductCatalog.Specs/ProductCatalog.Specs.csproj
+    - name: Create LivingDoc
+      run: ~/.dotnet/tools/livingdoc feature-folder src/ProductCatalog.Specs -t src/ProductCatalog.Specs/bin/Debug/net7.0/TestExecution.json --binding-assemblies src/ProductCatalog.Specs/bin/Debug/net7.0/ProductCatalog.Specs.dll --output livingdoc.html
