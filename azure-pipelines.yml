@@ -31,4 +31,4 @@ steps:
     projectName: 'Product Catalog Api'
     testExecutionJson: 'src/ProductCatalog.Specs/bin/Debug/net7.0/TestExecution.json'
     projectLanguage: 'en'
-    bindingAssemblies: '$(Build.SourcesDirectory)/src/ProductCatalog.Specs/bin/Release/net7.0/ProductCatalog.Specs.dll'
+    bindingAssemblies: 'src/ProductCatalog.Specs/bin/Debug/net7.0/ProductCatalog.Specs.dll'
