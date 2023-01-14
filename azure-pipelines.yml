@@ -14,7 +14,17 @@ steps:
     projects: 'src/ProductCatalog.Specs/ProductCatalog.Specs.csproj'
     arguments: '--no-restore'
 - task: DotNetCoreCLI@2
+  continueOnError: true
   inputs:
     command: 'test'
     projects: 'src/ProductCatalog.Specs/ProductCatalog.Specs.csproj'
     arguments: '--no-build'
+    
+- task: SpecFlowPlus@0
+  inputs:
+    generatorSource: 'FeatureFolder'
+    projectFilePath: 'src/ProductCatalog.Specs'
+    projectName: 'Product Catalog Api'
+    testExecutionJson: '$(Build.SourcesDirectory)/src/ProductCatalog.Specs/bin/Release/net7.0/TestExecution.json'
+    projectLanguage: 'en'
+    bindingAssemblies: '$(Build.SourcesDirectory)/src/ProductCatalog.Specs/bin/Release/net7.0/ProductCatalog.Specs.dll'
