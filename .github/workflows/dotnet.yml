@@ -27,3 +27,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal src/ProductCatalog.Specs/ProductCatalog.Specs.csproj
     - name: Create LivingDoc
       run: ~/.dotnet/tools/livingdoc feature-folder src/ProductCatalog.Specs -t src/ProductCatalog.Specs/bin/Debug/net7.0/TestExecution.json --binding-assemblies src/ProductCatalog.Specs/bin/Debug/net7.0/ProductCatalog.Specs.dll --output livingdoc.html
+    - uses: actions/upload-artifact@v3
+      with:
+        name: LivingDoc
+        path: SpecificationByExample/livingdoc.html
