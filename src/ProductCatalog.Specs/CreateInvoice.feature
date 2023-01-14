@@ -1,5 +1,5 @@
 Feature: Creating an invoice from a shopping basket
-    
+
 As a customer
 I want to review my order before paying
 So I know what items I ordered and the amount I have to pay
@@ -52,9 +52,9 @@ So I know what items I ordered and the amount I have to pay
     Scenario: Ordering physical items with a total amount above EUR 100 should result in free shipping
 
     Placing an order with a total amount above EUR 100 should give free shipping
-        
-***Free Shipping:***
-![Shopping Cart Mockup](./src/ProductCatalog.Specs/Assets/shipping_costs.png)
+
+    ***Free Shipping:***
+    ![Shopping Cart Mockup](./src/ProductCatalog.Specs/Assets/shipping_costs.png)
 
         Given Simone has a shopping cart with 10 copies of 'Specification By Example' with format 'Hardcover'
         When she is going to pay her order
@@ -62,17 +62,23 @@ So I know what items I ordered and the amount I have to pay
           | Name                                               | Amount | Price | Discount | Total Price |
           | Hardcover: Specification By Example by Gojko Adzic | 10x    | 31.49 | 0        | 314.90      |
           | Shipping                                           | 1x     | 5.95  | 5.95     | 0           |
-          
 
-     Scenario Outline: Ordering different amounts of books
-         
-         Given Simone has a shopping cart with <amount> copies of 'Specification By Example' with format 'Hardcover'
-         When she is going to pay her order
-         Then the shipping costs should be <shipping costs>
-         
-         Examples:
-         | amount | shipping costs |
-         | 1      | 5.95           |
-         | 3      | 5.95           |
-         | 4      | 0              |
-         | 10     | 0              |
+    Scenario Outline: Ordering different amounts of books
+
+        Given Simone has a shopping cart with <amount> copies of 'Specification By Example' with format '<format>'
+        When she is going to pay her order
+        Then the shipping costs should be <shipping costs>
+
+        Examples: Shipping costs
+          | format    | amount | shipping costs |
+          | Hardcover | 1      | 5.95           |
+          | Hardcover | 3      | 5.95           |
+
+        Examples: Free Shipping
+          | format    | amount | shipping costs |
+          | Hardcover | 4      | 0              |
+          | Hardcover | 10     | 0              |
+
+        Examples: No Shipping
+          | format    | amount | shipping costs |
+          | Hardcover | 0      | 0              |

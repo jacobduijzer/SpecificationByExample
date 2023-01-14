@@ -303,7 +303,7 @@ namespace ProductCatalog.Specs
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering physical items with a total amount above EUR 100 should result in free s" +
                     "hipping", "    Placing an order with a total amount above EUR 100 should give free shipping\n" +
-                    "        \n***Free Shipping:***\n![Shopping Cart Mockup](./src/ProductCatalog.Specs" +
+                    "\n    ***Free Shipping:***\n    ![Shopping Cart Mockup](./src/ProductCatalog.Specs" +
                     "/Assets/shipping_costs.png)", tagsOfScenario, argumentsOfScenario, featureTags);
 #line 52
     this.ScenarioInitialize(scenarioInfo);
@@ -353,19 +353,21 @@ namespace ProductCatalog.Specs
         [Xunit.SkippableTheoryAttribute(DisplayName="Ordering different amounts of books")]
         [Xunit.TraitAttribute("FeatureTitle", "Creating an invoice from a shopping basket")]
         [Xunit.TraitAttribute("Description", "Ordering different amounts of books")]
-        [Xunit.InlineDataAttribute("1", "5.95", new string[0])]
-        [Xunit.InlineDataAttribute("3", "5.95", new string[0])]
-        [Xunit.InlineDataAttribute("4", "0", new string[0])]
-        [Xunit.InlineDataAttribute("10", "0", new string[0])]
-        public void OrderingDifferentAmountsOfBooks(string amount, string shippingCosts, string[] exampleTags)
+        [Xunit.InlineDataAttribute("Hardcover", "1", "5.95", new string[0])]
+        [Xunit.InlineDataAttribute("Hardcover", "3", "5.95", new string[0])]
+        [Xunit.InlineDataAttribute("Hardcover", "4", "0", new string[0])]
+        [Xunit.InlineDataAttribute("Hardcover", "10", "0", new string[0])]
+        [Xunit.InlineDataAttribute("Hardcover", "0", "0", new string[0])]
+        public void OrderingDifferentAmountsOfBooks(string format, string amount, string shippingCosts, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("format", format);
             argumentsOfScenario.Add("amount", amount);
             argumentsOfScenario.Add("shipping costs", shippingCosts);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ordering different amounts of books", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 67
-     this.ScenarioInitialize(scenarioInfo);
+#line 66
+    this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -377,15 +379,15 @@ namespace ProductCatalog.Specs
 #line 7
     this.FeatureBackground();
 #line hidden
+#line 68
+        testRunner.Given(string.Format("Simone has a shopping cart with {0} copies of \'Specification By Example\' with for" +
+                            "mat \'{1}\'", amount, format), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 69
-         testRunner.Given(string.Format("Simone has a shopping cart with {0} copies of \'Specification By Example\' with for" +
-                            "mat \'Hardcover\'", amount), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.When("she is going to pay her order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 70
-         testRunner.When("she is going to pay her order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 71
-         testRunner.Then(string.Format("the shipping costs should be {0}", shippingCosts), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        testRunner.Then(string.Format("the shipping costs should be {0}", shippingCosts), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -17,28 +17,35 @@ public class ProductenZoekenSteps : IClassFixture<TestWebApplicationFactory<Prog
         _scenarioContext = scenarioContext;
         _api = Refit.RestService.For<ISearchApi>(factory.CreateClient());
     }
-
-    [Given(@"Simone wil het boek ""(.*)"" kopen")]
-    public void GivenSimoneWilHetBoekKopen(string title)
+    
+    [Given(@"Simone wil een boek kopen met de titel ""(.*)""")]
+    public void GivenSimoneWilEenBoekKopenMetDeTitel(string titel)
     {
-        _scenarioContext.Add("TITLE", title);
+        _scenarioContext.Add("TITLE", titel);
     }
-
-    [When(@"Simone zoekt in de categorie ""(.*)""")]
-    public async Task WhenSimoneZoektInDeCategorie(Category category)
+    
+    [Given(@"Simone zoekt in de categorie ""(.*)""")]
+    [Given(@"ze selecteerd de categorie ""(.*)""")]
+    public void GivenZeSelecteerdDeCategorie(Category category)
     {
-        SearchCriteria searchCriteria = new SearchCriteria
-        {
-            Title = _scenarioContext.Get<string>("TITLE"),
-            Category = category
-        };
-
-        var result = await _api.Search(searchCriteria);
+        _scenarioContext.Add("CATEGORY", category);
+    }
+    
+    [Given(@"Simone wil een book kopen van het formaat '(.*)'")]
+    public void GivenSimoneWilEenBookKopenVanHetFormaat(BookFormat bookFormat)
+    {
+        _scenarioContext.Add("FORMAT", bookFormat);
+    }
+    
+    [When(@"ze gaat zoeken")]
+    public async Task WhenZeGaatZoeken()
+    {
+        var result = await Search();
         _scenarioContext.Add("RESULT", result);
     }
 
     [Then(@"krijgt ze de keuze uit de volgende boeken")]
-    public void ThenKrijgtZeDeKeuzeUitDeVolgendeBoeken(Table bookTable)
+    public async Task ThenKrijgtZeDeKeuzeUitDeVolgendeBoeken(Table bookTable)
     {
         var referenceBooks = bookTable.CreateSet<(string Titel, string Auteur, BookFormat Formaat)>();
 
@@ -49,4 +56,25 @@ public class ProductenZoekenSteps : IClassFixture<TestWebApplicationFactory<Prog
                 result.Exists(x => x.Author == book.Auteur && x.Title == book.Titel && x.Format == book.Formaat));
         }
     }
+
+    private async Task<List<Book>> Search()
+    {
+        SearchCriteria searchCriteria = new();
+
+        if (_scenarioContext.ContainsKey("TITLE"))
+            searchCriteria.Title = _scenarioContext.Get<string>("TITLE");
+        
+        if (_scenarioContext.ContainsKey("AUTHOR"))
+            searchCriteria.Author = _scenarioContext.Get<string>("AUTHOR");
+        
+        if (_scenarioContext.ContainsKey("FORMAT"))
+            searchCriteria.Format = _scenarioContext.Get<BookFormat>("FORMAT");
+
+        if (_scenarioContext.ContainsKey("CATEGORY"))
+            searchCriteria.Category = _scenarioContext.Get<Category>("CATEGORY");
+        
+        return await _api.Search(searchCriteria);
+    }
+
+    
 }

@@ -40,8 +40,8 @@ namespace ProductCatalog.Specs
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("nl-NL"), "", "Zoeken in de product catalogus", "Als klant\nWil ik de product catalogus kunnen doorzoeken op producten die ik wil k" +
-                    "open\nZodat ik kan zien of het product leverbaar is", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("nl-NL"), "", "Zoeken in de product catalogus", "Als klant van de boekenwinkel\nWil ik kunnen zoeken naar boeken\nZodat ik boeken ka" +
+                    "n bestellen ", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,14 +81,14 @@ namespace ProductCatalog.Specs
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Een boek zoeken in een bepaalde categorie")]
+        [Xunit.SkippableFactAttribute(DisplayName="Een boek zoeken met een titel en in een bepaalde categorie")]
         [Xunit.TraitAttribute("FeatureTitle", "Zoeken in de product catalogus")]
-        [Xunit.TraitAttribute("Description", "Een boek zoeken in een bepaalde categorie")]
-        public void EenBoekZoekenInEenBepaaldeCategorie()
+        [Xunit.TraitAttribute("Description", "Een boek zoeken met een titel en in een bepaalde categorie")]
+        public void EenBoekZoekenMetEenTitelEnInEenBepaaldeCategorie()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Een boek zoeken in een bepaalde categorie", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Een boek zoeken met een titel en in een bepaalde categorie", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 9
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -100,10 +100,13 @@ namespace ProductCatalog.Specs
             {
                 this.ScenarioStart();
 #line 10
-        testRunner.Given("Simone wil het boek \"Specification By Example\" kopen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Gegeven ");
+        testRunner.Given("Simone wil een boek kopen met de titel \"Specification By Example\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Gegeven ");
 #line hidden
 #line 11
-        testRunner.When("Simone zoekt in de categorie \"SoftwareDevelopment\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Als ");
+        testRunner.And("ze selecteerd de categorie \"SoftwareDevelopment\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "En ");
+#line hidden
+#line 12
+        testRunner.When("ze gaat zoeken", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Als ");
 #line hidden
                 TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                             "Titel",
@@ -117,8 +120,102 @@ namespace ProductCatalog.Specs
                             "Specification By Example",
                             "Gojko Adzic",
                             "Hardcover"});
-#line 12
+#line 13
         testRunner.Then("krijgt ze de keuze uit de volgende boeken", ((string)(null)), table6, "Dan ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Boeken zoeken op formaat")]
+        [Xunit.TraitAttribute("FeatureTitle", "Zoeken in de product catalogus")]
+        [Xunit.TraitAttribute("Description", "Boeken zoeken op formaat")]
+        public void BoekenZoekenOpFormaat()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Boeken zoeken op formaat", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 18
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 19
+        testRunner.Given("Simone wil een book kopen van het formaat \'PDF\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Gegeven ");
+#line hidden
+#line 20
+        testRunner.When("ze gaat zoeken", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Als ");
+#line hidden
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Titel",
+                            "Auteur",
+                            "Formaat"});
+                table7.AddRow(new string[] {
+                            "Specification By Example",
+                            "Gojko Adzic",
+                            "PDF"});
+                table7.AddRow(new string[] {
+                            "Code That Fits In Your Head",
+                            "Mark Seeman",
+                            "PDF"});
+#line 21
+        testRunner.Then("krijgt ze de keuze uit de volgende boeken", ((string)(null)), table7, "Dan ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Boeken zoeken in een bepaalde categorie")]
+        [Xunit.TraitAttribute("FeatureTitle", "Zoeken in de product catalogus")]
+        [Xunit.TraitAttribute("Description", "Boeken zoeken in een bepaalde categorie")]
+        public void BoekenZoekenInEenBepaaldeCategorie()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Boeken zoeken in een bepaalde categorie", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 26
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 27
+        testRunner.Given("Simone zoekt in de categorie \"Testing\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Gegeven ");
+#line hidden
+#line 28
+        testRunner.When("ze gaat zoeken", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Als ");
+#line hidden
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Titel",
+                            "Auteur",
+                            "Formaat"});
+                table8.AddRow(new string[] {
+                            "Specification By Example",
+                            "Gojko Adzic",
+                            "PDF"});
+                table8.AddRow(new string[] {
+                            "Specification By Example",
+                            "Gojko Adzic",
+                            "Hardcover"});
+                table8.AddRow(new string[] {
+                            "Writing Great Specifications",
+                            "Kamil Nicieja",
+                            "Epub"});
+                table8.AddRow(new string[] {
+                            "Writing Great Specifications",
+                            "Kamil Nicieja",
+                            "Paperback"});
+#line 29
+        testRunner.Then("krijgt ze de keuze uit de volgende boeken", ((string)(null)), table8, "Dan ");
 #line hidden
             }
             this.ScenarioCleanup();

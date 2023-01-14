@@ -6,11 +6,9 @@ public record SearchBooksInCategoryQuery(SearchCriteria SearchCriteria)
 {
     public IEnumerable<Book> Handle()
     {
-        if (SearchCriteria.Category == null)
-            return new List<Book>();
-
-        var predicate = PredicateBuilder.New<Book>(false)
-            .And(book => book.Categories.Contains(SearchCriteria.Category.Value));
+        var predicate = PredicateBuilder.New<Book>(false);
+        if(SearchCriteria.Category.HasValue)    
+            predicate = predicate.And(book => book.Categories.Contains(SearchCriteria.Category.Value));
 
         if (!string.IsNullOrEmpty(SearchCriteria.Author))
             predicate = predicate.And(book => book.Author.Contains(SearchCriteria.Author, StringComparison.InvariantCultureIgnoreCase));
