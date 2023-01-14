@@ -30,4 +30,4 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: LivingDoc
-        path: SpecificationByExample/SpecificationByExample/livingdoc.html
+        path: /home/runner/work/SpecificationByExample/SpecificationByExample/livingdoc.html
