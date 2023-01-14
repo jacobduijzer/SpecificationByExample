@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 7.0.x
     - name: Install SpecFlow LivingDoc
       run: dotnet tool update --global SpecFlow.Plus.LivingDoc.CLI
     - name: Restore dependencies
@@ -27,3 +27,12 @@ jobs:
       run: dotnet test --no-build --verbosity normal src/ProductCatalog.Specs/ProductCatalog.Specs.csproj
     - name: Create LivingDoc
       run: ~/.dotnet/tools/livingdoc feature-folder src/ProductCatalog.Specs -t src/ProductCatalog.Specs/bin/Debug/net7.0/TestExecution.json --binding-assemblies src/ProductCatalog.Specs/bin/Debug/net7.0/ProductCatalog.Specs.dll --output livingdoc.html
+    - uses: actions/upload-artifact@v3
+      with:
+        name: LivingDoc
+        path: /home/runner/work/SpecificationByExample/SpecificationByExample/livingdoc.html
+    - name: HTML Preview
+      id: html_preview
+      uses: pavi2410/html-preview-action@v2
+      with:
+        html_file: '/home/runner/work/SpecificationByExample/SpecificationByExample/livingdoc.html'
