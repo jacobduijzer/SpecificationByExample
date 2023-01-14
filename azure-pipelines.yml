@@ -1,0 +1,20 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: 'src/ProductCatalog.Specs/ProductCatalog.Specs.csproj'
+    arguments: '--no-restore'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: 'src/ProductCatalog.Specs/ProductCatalog.Specs.csproj'
+    arguments: '--no-build'
